@@ -1,0 +1,51 @@
+.orderManagement {
+    display: flex;
+    height: 100%;
+
+    .listContainer {
+        flex: 3;
+        height: 100%;        
+
+        form {
+            border: 1px solid #999;
+            display: flex;
+            justify-content: space-between;
+            height: 54px;
+            gap: 5px;   
+            width: 95%;   
+            margin-bottom: 20px;                 
+    
+            input {
+                border: none;
+                padding: 0 10px;
+                width: 600px;        
+                
+            }
+            button {
+                border: none;
+                cursor: pointer;
+                background-color: #fece51;
+                flex: 1;                      
+                
+            }
+    
+        }
+        
+        .wrapper {
+            height: 100%;
+            padding-right: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            overflow-y: scroll;
+            padding-bottom: 100px;            
+        }
+    }
+
+    .detailsOrder {
+        flex: 2;
+        height: 100%;
+        background-color: #fcf5f3;
+        display: flex;
+    }
+}

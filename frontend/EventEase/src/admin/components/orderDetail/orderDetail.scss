@@ -1,0 +1,116 @@
+.orderDetail {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+  width: 100%;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 10px 20px;
+
+    h1 {
+      font-size: 1.8rem;
+      margin: 0;
+      color: #333;
+    }
+
+    .orderInfo {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      .orderID {
+        font-size: 0.9rem;
+        color: #888;
+        margin: 0;
+      }
+
+      .status {
+        font-size: 1.1rem;
+        padding: 5px;
+        border-radius: 5px;
+        display: inline-block;
+        margin-top: 5px;
+
+        &.booking,
+        &.confirmation {
+          background-color: #ffcc00;
+          color: #fff;
+        }
+
+        &.payment {
+          background-color: #4caf50;
+          color: #fff;
+        }
+
+        &.preparation {
+          background-color: #ff9800;
+          color: #fff;
+        }
+
+        &.event {
+          background-color: #673ab7;
+          color: #fff;
+        }
+
+        &.post-event,
+        &.follow-up {
+          background-color: #9e9e9e;
+          color: #fff;
+        }
+
+        &.cancelled {
+          background-color: #f44336;         
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .textContainer {
+    display: flex; /* Sử dụng flexbox để bố trí các phần tử */
+    flex-direction: column; /* Sắp xếp theo chiều dọc */
+    padding: 20px; /* Khoảng cách bên trong */
+    background-color: #f9f9f9; /* Màu nền nhẹ */
+    border-radius: 8px; /* Bo góc */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ cho phần tử */
+  
+    .venueInfo, .customerInfo {
+      margin-bottom: 20px; /* Khoảng cách giữa các phần thông tin */
+      padding: 15px; /* Khoảng cách bên trong */
+      background-color: #fff; /* Màu nền trắng cho từng phần */
+      border-radius: 5px; /* Bo góc */
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ cho từng phần */
+  
+      h3 {
+        margin-top: 0; /* Bỏ khoảng cách trên cho tiêu đề */
+        color: #333; /* Màu chữ cho tiêu đề */
+      }
+  
+      p {
+        margin: 5px 0; /* Khoảng cách giữa các đoạn văn */
+        color: #555; /* Màu chữ cho các đoạn văn */
+        strong {
+          color: #000; /* Màu chữ đậm cho các nhãn */
+        }
+      }
+  
+      .reviewSection {
+        margin-top: 15px; /* Khoảng cách trên cho phần đánh giá */
+        padding: 10px; /* Khoảng cách bên trong */
+        background-color: #e8f5e9; /* Màu nền nhẹ cho phần đánh giá */
+        border-left: 4px solid #4caf50; /* Đường viền bên trái màu xanh lá */
+        
+        h4 {
+          margin-top: 0; /* Bỏ khoảng cách trên cho tiêu đề đánh giá */
+          color: #4caf50; /* Màu chữ cho tiêu đề đánh giá */
+        }
+      }
+    }
+  }
+  
+}
