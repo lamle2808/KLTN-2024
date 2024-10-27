@@ -1,0 +1,71 @@
+.paymentPage {
+  display: flex;
+  height: 100%;
+
+  .event-summary {
+    flex: 3;
+    font-family: Arial, sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  
+    .info-container {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px;
+      gap: 20px;
+  
+      .info-column {
+        flex: 1; 
+        margin: 0 10px; 
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+  
+        h2 {
+          color: #333;
+          margin-top: 0;
+        }
+  
+        p {
+          font-size: 14px;
+          line-height: 1.5;
+          color: #666;
+        }
+      }
+    }
+  
+    h2 {
+      color: #333;
+      margin-top: 20px;
+    }
+  
+    h3 {
+      color: #555;
+    }
+  
+    ul {
+      list-style-type: none;
+      padding:  0;
+  
+      li {
+        margin: 5px 0;
+        font-size: 14px;
+        color: #444;
+  
+        strong {
+          color: #000;
+        }
+      }
+    }
+  }
+
+  .payment {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    background-color: #fcf5f5;
+  }
+}

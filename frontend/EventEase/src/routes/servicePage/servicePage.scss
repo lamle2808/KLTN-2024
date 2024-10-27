@@ -1,0 +1,114 @@
+.servicePage {
+    display: flex;
+    height: 100%;
+    background-color: #f7f7f9;
+  
+    .serviceSelection {
+      flex: 3;
+      overflow-y: auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-right: 1px solid #e0e0e0;
+    }
+  
+    .summaryContent {
+      flex: 2;
+      background-color: #fcf5f5;      
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  
+      .title {
+        font-size: 1.8em;
+        color: #e94560;
+        font-weight: 700;
+        margin-bottom: 15px;
+        letter-spacing: 0.03em;
+        text-align: center;
+      }
+  
+      .address, .rating, .price, .description {
+        margin: 10px 0;
+        font-size: 1.1em;
+        color: #666;
+        width: 100%;
+        max-width: 350px;
+        text-align: center;
+      }
+  
+      .address, .rating {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #555;
+  
+        svg {
+          margin-right: 6px;
+          color: #666;
+        }
+      }
+  
+      .rating {
+        font-size: 1.2em;
+        font-weight: 600;
+        color: #ffd700;
+  
+        svg {
+          color: #ffd700; /* Gold color for the star icon */
+        }
+      }
+  
+      .price {
+        font-size: 1.3em;
+        font-weight: bold;
+        color: #333;
+        margin-top: 15px;
+        background-color: rgba(254, 205, 81, 0.438);
+        padding: 8px 12px;
+        border-radius: 4px;
+        text-align: center;
+      }
+  
+      .description {
+        font-size: 1em;
+        color: #555;
+        line-height: 1.6;
+        text-align: left;
+        width: 100%;
+        max-width: 400px;
+      }
+  
+      .mapContainer {
+        width: 100%;
+        max-width: 400px;
+        height: 200px;
+        margin-top: 20px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+  
+        &:hover {
+          transform: scale(1.02);
+        }
+      }
+      .nextButton {
+        width: 90%;
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 1em;
+        font-weight: 600;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        background-color: white;
+        border: 1px solid #fece51;
+  
+        &:hover {
+          background-color: #fece51;
+        }
+      }
+    }
+  }
+  
