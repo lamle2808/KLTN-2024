@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import './OrderManagement.scss';
 import OrderCard from "../../components/orderCard/OrderCard";
 
-import  {orderData}  from "../../../lib/venue_data_20";
+import  {orderDataAdmin}  from "../../../lib/venue_data_20";
 import { useState } from "react";
 import OrderDetail from "../../components/orderDetail/OrderDetail";
 
 export default function OrderManagement() {
-  const data = orderData;
+  const data = orderDataAdmin;
   
   const [selectedOrder, setSelectedOrder] = useState(null); 
 

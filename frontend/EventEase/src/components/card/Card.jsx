@@ -14,12 +14,12 @@ import {
 export default function Card({ item }) {
   return (
     <div className="card">
-      <Link to={`/${item.id}`} className="imageContainer">
+      <Link to={`/${item.id}`} state={{venue : item}} className="imageContainer">
         <img src={item.img} />
       </Link>
       <div className="textContainer">
         <h2 className="title">
-          <Link to={`/${item.id}`}>{item.title}</Link>
+          <Link to={`/${item.id}`} state={{venue :  item}} >{item.title}</Link>
         </h2>
         <p className="rating">
           {item.rating}
@@ -64,10 +64,25 @@ Card.propTypes = {
   item: PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     title: PropTypes.string.isRequired,
-    address: PropTypes.string,
-    price: PropTypes.number,
-    capacity: PropTypes.number,
     img: PropTypes.string,
+    images: PropTypes.arrayOf(PropTypes.string),
+    address: PropTypes.string,
+    coordinates: PropTypes.shape({
+      latitude: PropTypes.number,
+      longitude: PropTypes.number,
+    }).isRequired,
+    capacity: PropTypes.number,
+    price: PropTypes.number,
     rating: PropTypes.number,
+    size: PropTypes.number,
+    description: PropTypes.string,
+    placeType: PropTypes.string,
+    services: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string,
+      price: PropTypes.number,
+      img: PropTypes.string,
+    })), 
   }).isRequired,
 };

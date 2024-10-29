@@ -21,6 +21,7 @@ export default function Navbar() {
               <span>EVENTEASE</span>
             </a>
             <a href="/">Home</a>
+            <a href="/order">Order</a>
             <a href="/">About</a>
             <a href="/">Contact</a>
           </div>
@@ -55,6 +56,7 @@ export default function Navbar() {
             <div className={open ? "menu active" : "menu"}>
               <a href="/">Home</a>
               <a href="/">About</a>
+              <a href="/">Order</a>
               <a href="/">Contact</a>
               <a href="/">Sign In</a>
               <a href="/">Sign up</a>

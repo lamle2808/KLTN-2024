@@ -13,6 +13,7 @@ import UserManagement from "./admin/routes/userManagementPage/UserManagement";
 import OrderManagement from "./admin/routes/orderManagement/OrderManagement";
 import AddVenuePage from "./routes/addVenuePage/AddVenuePage";
 import PaymentPage from "./routes/paymentPage/PaymentPage";
+import OrderPage from "./routes/orderPage/OrderPage";
 function App() {
   const router = createBrowserRouter([
     {
@@ -38,6 +39,10 @@ function App() {
         {
           path: "/login",
           element: <Login/>,
+        },
+        {
+          path: "/order",
+          element: <OrderPage />,
         },
         {
           path: "/signup",

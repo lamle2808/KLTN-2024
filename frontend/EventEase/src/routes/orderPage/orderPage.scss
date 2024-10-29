@@ -1,8 +1,8 @@
-.orderManagement {
+.orderPage {
     display: flex;
     height: 100%;
 
-    .listContainer {
+    .orderList {
         flex: 3;
         height: 100%;        
 
@@ -42,7 +42,7 @@
         }
     }
 
-    .detailsOrder {
+    .orderDetails {
         flex: 2;
         height: 100%;
         background-color: #fcf5f3;

@@ -10,6 +10,7 @@ import { useState } from "react";
 export default function Slider({ images }) {
   const [imageIndex, setImageIndex] = useState(null);
 
+  
   const changeSlide = (direction) => {
     if (direction === "right") {
       if (imageIndex === images.length - 1) {

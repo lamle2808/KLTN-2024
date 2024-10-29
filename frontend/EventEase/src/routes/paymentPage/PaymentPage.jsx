@@ -1,49 +1,36 @@
-import React from 'react'
 import './paymentPage.scss';
 import PaymentModal from '../../components/PaymentModal/PaymentModal';
+import { useLocation } from 'react-router-dom';
 
 export default function PaymentPage() {
+
+  const location = useLocation();
+  const venue = location.state?.venue;
+  const selectedServices = location.state?.selectedServices || [];
+
     const eventDetails = {
-        eventName: "30th Birthday Party",
         date: "December 25, 2023",
-        time: "6:00 PM - 10:00 PM",
-        venue: {
-          name: "ABC Restaurant",
-          address: "123 XYZ Street, Ho Chi Minh City",
-        },
+
         customer: {
           name: "John Doe",
           phone: "0123 456 789",
           email: "johndoe@gmail.com",
         },
         guests: 50,
-        additionalServices: [
-          { name: "Sound System", price: 300 },
-          { name: "Lighting Setup", price: 200 },
-          { name: "Buffet Catering", price: 500 },
-          { name: "Decoration", price: 150 },
-          { name: "Photography", price: 400 },
-        ],
         baseVenueCost: 1000,
       };
     
-      const totalAdditionalServices = eventDetails.additionalServices.reduce((total, service) => total + service.price, 0);
-      const totalCost = eventDetails.baseVenueCost + totalAdditionalServices;
+      const totalAdditionalServices = selectedServices.reduce((total, service) => total + service.price, 0);
+      const totalCost = venue.price + totalAdditionalServices;
     
   return (
     <div className='paymentPage'>
     <div className="event-summary">
-      <div className="info-container">
-        <div className="info-column">
-          <h2>Event Information</h2>
-          <p><strong>Event Name:</strong> {eventDetails.eventName}</p>
-          <p><strong>Date:</strong> {eventDetails.date}</p>
-          <p><strong>Time:</strong> {eventDetails.time}</p>
-        </div>
+      <div className="info-container">      
         <div className="info-column">
           <h2>Venue Information</h2>
-          <p><strong>Venue Name:</strong> {eventDetails.venue.name}</p>
-          <p><strong>Address:</strong> {eventDetails.venue.address}</p>
+          <p><strong>Venue Name:</strong> {venue.title}</p>
+          <p><strong>Address:</strong> {venue.address}</p>
         </div>
         <div className="info-column">
           <h2>Customer Information</h2>
@@ -53,27 +40,27 @@ export default function PaymentPage() {
         </div>
       </div>
       
-      <h2>Service Details</h2>
-      <p><strong>Number of Guests:</strong> {eventDetails.guests}</p>
+      <h2>Event Information</h2>
+      <p><strong>Event Date:</strong> {eventDetails.date}</p>
+      <p><strong>Number of Guests:</strong> {venue.capacity}</p>
       
-      <h3>Additional Services</h3>
+      <h2>Additional Services</h2>
       <ul>
-        {eventDetails.additionalServices.map((service, index) => (
-          <li key={index}><strong>{service.name}:</strong> ${service.price}</li>
+        {selectedServices.map((service, index) => (
+          <li key={index}><strong>{service.name}:</strong>{service.price} VND</li>
         ))}
       </ul>
       
       <h3>Cost Breakdown</h3>
-      <p><strong>Base Venue Cost:</strong> ${eventDetails.baseVenueCost}</p>
-      <p><strong>Additional Services Total:</strong> ${totalAdditionalServices}</p>
-      <p><strong><em>Total Cost:</em></strong> ${totalCost}</p>
+      <p><strong>Base Venue Cost:</strong>{venue.price} VND</p>
+      <p><strong>Additional Services Total:</strong>{totalAdditionalServices} VND</p>
+      <p><strong><em>Total Cost:</em></strong>{totalCost}VND</p>
       
       <h2>Payment Information</h2>
-      <p><strong>Total Amount Due:</strong> ${totalCost}</p>
+      <p><strong>Total Amount Due:</strong>{totalCost} VND</p>
       
     </div>
-    <div className="payment">   <PaymentModal /></div>
-   
+    <div className="payment">   <PaymentModal /></div>   
     </div>
   )
 }
