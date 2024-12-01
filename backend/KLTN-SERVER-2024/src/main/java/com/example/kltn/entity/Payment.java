@@ -12,7 +12,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "payments")
@@ -25,10 +25,18 @@ public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private String transactionId;
+    private String paymentMethod;
+    private String paymentStatus;
+    private double amount;
+    private Date paymentDate;
+
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
-    private Date paymentDate;
-    private String paymentMethod;
-    private String paymentSatus;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 }

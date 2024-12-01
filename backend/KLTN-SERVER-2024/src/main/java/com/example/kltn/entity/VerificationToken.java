@@ -1,5 +1,6 @@
 package com.example.kltn.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
@@ -20,7 +21,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class VerificationToken {
+public class VerificationToken implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,5 +30,11 @@ public class VerificationToken {
     @JoinColumn(name = "account_id", nullable = false)
     private Account account;
     private LocalDateTime expiryDate;
+
+    public VerificationToken(String token, Account account) {
+        this.token = token;
+        this.account = account;
+        this.expiryDate = LocalDateTime.now().plusHours(24);
+    }
 
 }

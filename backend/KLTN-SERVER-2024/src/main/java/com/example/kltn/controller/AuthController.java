@@ -11,16 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.kltn.dataBean.LoginResponse;
 import com.example.kltn.entity.Account;
 import com.example.kltn.entity.VerificationToken;
 import com.example.kltn.service.AccountService;
 import com.example.kltn.service.EmailService;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/v1/auth")
+@Slf4j
 public class AuthController {
     private final AccountService accountService;
     private final EmailService emailService;
@@ -65,28 +68,30 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody Account account) {
+    public ResponseEntity<String> login(@RequestBody Account account) {
         try {
+            log.info("Đang xử lý đăng nhập cho email: {}", account.getEmail());
+            
             String token = accountService.login(account);
             if (token.equals("")) {
-                return ResponseEntity.badRequest().body("incorrect email or incorrect password!!");
+                log.warn("Đăng nhập thất bại - email hoặc mật khẩu không chính xác: {}", account.getEmail());
+                return ResponseEntity.badRequest().body("Email hoặc mật khẩu không chính xác");
             }
-            Account accountLogin = accountService.getByEmail2(account.getEmail());
+            
+            Account accountLogin = accountService.getByEmail(account.getEmail()).orElseThrow();
             if (accountLogin.getEnable() == 0 || accountLogin.getIsVerified() == 0) {
-                return ResponseEntity.badRequest().body("account is not acctive !!");
+                log.warn("Đăng nhập thất bại - tài khoản chưa được kích hoạt: {}", account.getEmail());
+                return ResponseEntity.badRequest().body("Tài khoản chưa được kích hoạt");
             }
-            // Customer customer = customerService.getByEmail(account.getEmail());
-            // if (customer != null) {
-            // CustomerDataBean customerDataBean = accountService.customerLogin(token,
-            // customer);
-            // return ResponseEntity.ok().body(customerDataBean);
-            // }
-            // Employee employee = employeeService.getByEmail(account.getEmail());
-            // EmployeeDataBean employeeDataBean = accountService.employeeLogin(token,
-            // employee);
+            
+            log.info("Đăng nhập thành công cho email: {}", account.getEmail());
+            LoginResponse loginResponse = LoginResponse.fromAccount(token, accountLogin);
             return ResponseEntity.ok().body(token);
+            
         } catch (Exception exception) {
-            return ResponseEntity.badRequest().body("There is an exception when execute!! --> " + exception);
+            log.error("Lỗi đăng nhập cho email: {}", account.getEmail(), exception);
+            return ResponseEntity.badRequest()
+                .body("Có lỗi xảy ra trong quá trình đăng nhập: " + exception.getMessage());
         }
     }
 

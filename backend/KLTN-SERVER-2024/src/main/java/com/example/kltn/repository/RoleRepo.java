@@ -1,6 +1,7 @@
 package com.example.kltn.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -13,5 +14,5 @@ public interface RoleRepo extends JpaRepository<Role, Long> {
 
     List<Role> findRoleByNameContaining(String name);
 
-    List<Role> findAll();
+    Optional<Role> findByName(String name);
 }
